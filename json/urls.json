@@ -1,0 +1,27 @@
+{
+    "1": {
+        "url": "https://keep.google.com/",
+        "data_acesso": "12/08/2024",
+        "horario_acesso": "14:30"
+    },
+    "2": {
+        "url": "https://cba.ifmt.edu.br/",
+        "data_acesso": "11/08/2024",
+        "horario_acesso": "09:00"
+    },
+    "3": {
+        "url": "https://github.com/",
+        "data_acesso": "10/08/2024",
+        "horario_acesso": "16:45"
+    },
+    "4": {
+        "url": "https://stackoverflow.com/",
+        "data_acesso": "09/08/2024",
+        "horario_acesso": "11:15"
+    },
+    "5": {
+        "url": "https://openai.com/",
+        "data_acesso": "08/08/2024",
+        "horario_acesso": "18:00"
+    }
+}
