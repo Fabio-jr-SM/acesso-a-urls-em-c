@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../Cjson/cJSON.h"
 #include "../library/urls.h"
 
-#define MAX_LISTA 100
+#define MAX_LISTA 10
 
 // Verificar se a lista está cheia
 int listaCheia(LISTA li) {
@@ -138,4 +139,39 @@ int removePosicaoQualquer(LISTA li, int posicao) {
     }
     li->qtd--;
     return 1;
+}
+
+
+void carregarDadosJSON(LISTA li, const char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Não foi possível abrir o arquivo JSON.\n");
+        return;
+    }
+
+    fseek(file, 0, SEEK_END);
+    long length = ftell(file);
+    fseek(file, 0, SEEK_SET);
+    char *data = malloc(length + 1);
+    fread(data, 1, length, file);
+    fclose(file);
+
+    cJSON *json = cJSON_Parse(data);
+    if (json == NULL) {
+        printf("Erro ao parsear o JSON.\n");
+        free(data);
+        return;
+    }
+
+    cJSON *item;
+    cJSON_ArrayForEach(item, json) {
+        URL coleta;
+        strcpy(coleta.url, cJSON_GetObjectItem(item, "url")->valuestring);
+        strcpy(coleta.data_acesso, cJSON_GetObjectItem(item, "data_acesso")->valuestring);
+        strcpy(coleta.horario_acesso, cJSON_GetObjectItem(item, "horario_acesso")->valuestring);
+        insereLista(li, coleta);
+    }
+
+    cJSON_Delete(json);
+    free(data);
 }

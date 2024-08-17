@@ -21,3 +21,4 @@ int removeFinal(LISTA li);
 int removeInicio(LISTA li);
 int removePosicaoQualquer(LISTA li, int posicao);
 int inserePosicaoQualquer(LISTA li, int posicao, URL url_info);
+void carregarDadosJSON(LISTA li, const char *filename);

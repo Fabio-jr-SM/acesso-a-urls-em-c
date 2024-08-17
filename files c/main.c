@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+#include "../Cjson/cJSON.h"
 #include "../library/urls.h"
 
 int main() {
     LISTA li = criaLista();
+    carregarDadosJSON(li, "urls.json");
     int op, posicao;
     URL coleta;
 
