@@ -11,6 +11,7 @@ typedef struct lista {
     URL dados[100];
 } *LISTA;
 
+void menu();
 LISTA criaLista();
 int insereLista(LISTA li, URL url_info);
 void mostraLista(LISTA li);
